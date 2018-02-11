@@ -1,0 +1,48 @@
+.canvasarea {
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+.form-group {
+	margin-top: 1rem;
+	margin-bottom: 0rem;
+}
+
+.writingarea {
+	width: 200%;
+	height: 5rem;
+}
+
+.area {
+	display: flex;
+	padding-left: 1rem;
+  padding-right: 1rem;
+	padding-top: 0.5rem;
+}
+
+.area > .storyArea {
+  display: block;
+}
+
+.area > .prevArea {
+  width:  50%;
+}
+
+.area > .createArea {
+  padding-left: 1rem;
+}
+
+.picture {
+	width: 80%;
+	height: 80%;
+}
+
+.storyPicture {
+  width: 30%;
+  height: auto;
+}
+
+.button {
+	color: #004080;
+	margin-top: 1rem;
+}

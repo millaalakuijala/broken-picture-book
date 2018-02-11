@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'OrangeJuice';
+  src: url('./fonts/orangejuice.ttf');
+}
+
+.header {
+	border-bottom: 1px solid #004080;
+  width: 100%;
+  padding: 1em 1em 1em 1em;
+}
+
+.header > span {
+  font-family: OrangeJuice;
+  font-size: 3rem;
+  color: #004d99;
+}
+
+.header > button {
+  float: right;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
