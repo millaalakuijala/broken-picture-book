@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap'
 
 class Header extends Component {
   
+  // Header button portrays a different text depending on the current view.
+  // TODO: header button has different functionality depending on current view.
   setText = () => {
     if (this.props.view === 'lobby') {
       return 'Join game'

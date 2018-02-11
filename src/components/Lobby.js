@@ -12,12 +12,15 @@ class Lobby extends Component {
     }
   }
 
+  // joinGame emits a message to all clients that player with playerName has joined game with gameIndex.
   joinGame = (gameIndex, playerName) => {
   	const socket = socketIOClient(this.state.endpoint)
     socket.emit('join game', gameIndex, playerName)
   }
 
 render() {
+
+  // When a join game event is received, the player is added to the game's player list.
 	const socket = socketIOClient(this.state.endpoint)
     socket.on('join game', (gameIndex, playerName) => {
     	const copyOfGames = this.state.games.slice()
@@ -30,7 +33,9 @@ render() {
     	else console.log('Game is full')
     })
 
-  const listGroupItems = this.state.games.map((game, index) => {
+  // The games are mapped to a list.
+  // TODO: clicking on a game doesn't instantly join it, but chooses it as active.
+  const listOfGames = this.state.games.map((game, index) => {
   return (
     <ListGroupItem
       key={index}
@@ -45,7 +50,7 @@ render() {
 return (
   <div className="centered-list">
     <ListGroup>
-      {listGroupItems}
+      {listOfGames}
     </ListGroup>
   </div>
  )}

@@ -8,6 +8,9 @@ const app = express()
 const server = http.createServer(app)
 const io = socketIO(server)
 
+// The server listens to different inputs that come from the app and reacts accordingly.
+// It emits the messages forward to all clients.
+
 io.on('connection', socket => {
 	console.log('User connected')
   socket.on('join game', (gameIndex, playerName) => {

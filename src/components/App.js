@@ -8,6 +8,8 @@ export default class App extends React.Component {
     view: 'lobby',
   }
 
+  // TODO: View changes will be implemented with a Router, not state
+
   changeView = (newView) => {
     this.setState({ view: newView })
   }
