@@ -21,9 +21,10 @@ class WritingArea extends Component {
                          placeholder="Write a story..."
                          onChange={this.handleChange} />
           </FormGroup>
+          {/* The functions of both buttons require the user-written sentence to save it for later use. */}
           <ButtonGroup>
           <Button className="button" onClick={() => this.props.nextTurn(this.state.currSentence)}>Next turn</Button>
-          <Button className="button" onClick={() => this.props.setComplete()}>Story is complete</Button>
+          <Button className="button" onClick={() => this.props.setComplete(this.state.currSentence)}>Story is complete</Button>
           </ButtonGroup>
           </div>
 

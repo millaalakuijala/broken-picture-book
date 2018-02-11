@@ -5,15 +5,25 @@ import Game from './Game';
 
 export default class App extends React.Component {
   state = {
-    view: 'game',
+    view: 'lobby',
+  }
+
+  // TODO: View changes will be implemented with a Router, not state
+
+  changeView = (newView) => {
+    this.setState({ view: newView })
   }
 
   render() { 
     if (this.state.view === 'lobby')
       return (
         <div>
-          <Header />
-          <Lobby />
+          <Header
+            view={this.state.view}
+          />
+          <Lobby
+            changeView={(newView) => this.changeView(newView)}
+          />
         </div>
       )
     else if (this.state.view === 'game')

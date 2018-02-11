@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 class StoryArea extends Component {
+
+  // StoryArea shows sentence and image one by one.
   render() {
     const storypoints = []
     const n1 = this.props.sentences.length
