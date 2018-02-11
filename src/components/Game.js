@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import socketIOClient from "socket.io-client"
 import './css/Areas.css'
 import './css/Header.css'
 import CanvasArea from './Draw'
@@ -8,6 +9,7 @@ import Header from './Header'
 
 export default class App extends Component {
 	state = {
+        endpoint: "http://127.0.0.1:4001",
 		turn: 0,
 		sentences: [],
 		imagedatas: [],
@@ -24,18 +26,11 @@ export default class App extends Component {
     this.setState({ turn: this.state.turn + 1 })
   }
 
-  /*nextTurnForDraw = (imagedata) => {
-    this.setState({ turn: this.state.turn + 1 })
-    this.setState({ imagedatas: [...this.state.imagedatas, imagedata] })
-  }
-
-  nextTurnForWrite = (sentence) => {
-  	this.setState({ turn: this.state.turn + 1 })
-  	this.setState({ sentences: [...this.state.sentences, sentence] })
-  }*/
-
-  setComplete = () => {
-  	this.setState({ complete: true })
+  setComplete = (data) => {
+    this.nextTurn(data)
+    const socket = socketIOClient(this.state.endpoint)
+    socket.emit('end game')
+    console.log('end game prkl')
   }
 
   newGame = () => {
@@ -43,6 +38,12 @@ export default class App extends Component {
   }
 
   render () {
+    const socket = socketIOClient(this.state.endpoint)
+    socket.on('end game', () => {
+        this.setState({ complete: true })
+        console.log('Ending succeeded')
+    })
+
     if (this.state.complete) {
     	return (
     		<div>
@@ -70,7 +71,7 @@ export default class App extends Component {
     		    <div className="area">
       		    <WritingArea className="area"
     			      nextTurn={(sentence) => this.nextTurn(sentence)}
-    			      setComplete={() => this.setComplete()}
+    			      setComplete={(sentence) => this.setComplete(sentence)}
     			    />
     			  </div>
     			</div>
@@ -91,7 +92,7 @@ export default class App extends Component {
     			  <div className="createArea">
     			    <WritingArea
     	          nextTurn={(sentence) => this.nextTurn(sentence)}
-    	          setComplete={() => this.setComplete()}
+    	          setComplete={(sentence) => this.setComplete(sentence)}
     	        />
     	      </div>
     		  </div>
@@ -112,7 +113,7 @@ export default class App extends Component {
         	  <div className="createArea">
         	      <CanvasArea
         	        nextTurn={(imagedata) => this.nextTurn(imagedata)}
-        	        setComplete={() => this.setComplete()}
+        	        setComplete={(imagedata) => this.setComplete(imagedata)}
         	      />
         	    </div>
         	 </div>

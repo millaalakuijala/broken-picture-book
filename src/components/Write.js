@@ -23,7 +23,7 @@ class WritingArea extends Component {
           </FormGroup>
           <ButtonGroup>
           <Button className="button" onClick={() => this.props.nextTurn(this.state.currSentence)}>Next turn</Button>
-          <Button className="button" onClick={() => this.props.setComplete()}>Story is complete</Button>
+          <Button className="button" onClick={() => this.props.setComplete(this.state.currSentence)}>Story is complete</Button>
           </ButtonGroup>
           </div>
 

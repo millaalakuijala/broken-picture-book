@@ -1,3 +1,3 @@
-run with npm start.
+Run node server.js to get the server started.
 
-To see what's happening on the server, run node server.js.
+Run npm start to get the app started.

@@ -14,9 +14,13 @@ io.on('connection', socket => {
   	console.log('Joining game', gameIndex, ', player ', playerName)
    	io.sockets.emit('join game', gameIndex, playerName)
   })
-	socket.on('disconnect', () => {
-		console.log('User disconnected')
-	})
+  socket.on('end game', () => {
+  	console.log('Ending game')
+   	io.sockets.emit('end game')
+  })
+  socket.on('disconnect', () => {
+    console.log('User disconnected')
+  })
 })
 
 server.listen(port, () => console.log(`Listening on port ${port}`))

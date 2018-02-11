@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import socketIOClient from "socket.io-client";
+import React, { Component } from "react"
+import socketIOClient from "socket.io-client"
 import { ListGroupItem, ListGroup } from 'react-bootstrap'
 
 class Lobby extends Component {
@@ -24,6 +24,7 @@ render() {
     	if (copyOfGames[gameIndex].players.length < copyOfGames[gameIndex].maxPlayers) {
     		copyOfGames[gameIndex].players.push(playerName)
     		this.setState({ games: copyOfGames })
+        this.props.changeView('game')
     		console.log('Joining succeeded')
     	}
     	else console.log('Game is full')

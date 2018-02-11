@@ -18,7 +18,7 @@ class CanvasArea extends Component {
             />
             <ButtonGroup>
             <Button className="button" onClick={() => this.props.nextTurn(this.refs.canvasarea.toDataURL().toString())}>Next turn</Button>
-            <Button className="button" onClick={() => this.props.setComplete()}>Story is complete</Button>
+            <Button className="button" onClick={() => this.props.setComplete(this.refs.canvasarea.toDataURL().toString())}>Story is complete</Button>
             </ButtonGroup>
             </div>
         )

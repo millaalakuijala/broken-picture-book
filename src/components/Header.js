@@ -4,8 +4,13 @@ import { Button } from 'react-bootstrap'
 class Header extends Component {
   
   setText = () => {
-    const text = (this.props.complete) ? "Play again?" : "New game"
-    return text
+    if (this.props.view === 'lobby') {
+      return 'Join game'
+    }
+    else if (this.props.complete) {
+      return 'Play again?'
+    }
+    else return 'Start over'
   }
 
   render() {
