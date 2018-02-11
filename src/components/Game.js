@@ -30,7 +30,6 @@ export default class App extends Component {
     this.nextTurn(data)
     const socket = socketIOClient(this.state.endpoint)
     socket.emit('end game')
-    console.log('end game prkl')
   }
 
   newGame = () => {
